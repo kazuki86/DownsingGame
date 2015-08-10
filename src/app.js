@@ -139,7 +139,7 @@ var HelloWorldLayer = cc.Layer.extend({
                 }
 
 
-                if(theta < 360 && theta >= 315 || theta < 45 && theta > 0){//右
+                if((theta < 360 && theta >= 315) || (theta < 45 && theta > 0)){//右
                     cc.log("right");
                     xmovement = -1;
                     ymovement = 0;
