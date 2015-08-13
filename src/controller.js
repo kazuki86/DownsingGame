@@ -3,6 +3,7 @@ var ControllerLayer = cc.Layer.extend({
     xmovement:0,
     ymovement:0,
     mapData:null,
+    _drawNode1:null,
 
     ctor:function(){
         this._super();
@@ -14,6 +15,14 @@ var ControllerLayer = cc.Layer.extend({
                                                    ControllerLayer.Y_ORIGIN_POINT));
             this.controllerButton.setScale(0.4);
             this.addChild(this.controllerButton,4);
+        
+            //draw a circle 
+            this._drawNode1 = new cc.DrawNode();
+            this.addChild(this._drawNode1,4);
+            this._drawNode1.drawCircle(
+                cc.p(ControllerLayer.X_ORIGIN_POINT,ControllerLayer.Y_ORIGIN_POINT),
+                ControllerLayer.CONTROLL_AREA_RADIUS,
+                null,72,false);
     },
     setCntBtnPosAndPMove:function(touche){
         var location = touche.getLocation();
