@@ -16,6 +16,9 @@
         "src/controller.js",
         "src/player.js",
         "src/map.js",
+        "src/collision.js",
+        "src/treasureAndBomb.js",
         "src/playscene.js"
+
     ]
 }

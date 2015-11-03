@@ -1,12 +1,21 @@
+var COLLISION_OBJ;
+
 //var gameLayer = null;
 var PlayScene = cc.Scene.extend({
     gameLayer:null,
     player:null,
     controller:null,
     map:null,
+    objects:null,
 
     ctor:function(){
         this._super();
+        cc.loader.loadJson(res.Objects_json, function(err,result){
+            //cc.log(JSON.stringify(result));
+            this.objects = result;
+            COLLISION_OBJ = result;
+            
+        }.bind(this));
     },
     onEnter:function () {
         this._super();
@@ -15,6 +24,9 @@ var PlayScene = cc.Scene.extend({
         this.gameLayer.addChild(new ControllerLayer(), 1,PlayScene.TAG_CONTROLLER);
         this.gameLayer.addChild(new PlayerLayer(), 1, PlayScene.TAG_PLAYER);
         this.gameLayer.addChild(new MapLayer(res.Map_tmx), 0, PlayScene.TAG_MAP);
+        cc.log("loaded.");
+//        cc.log(COL);
+//        this.gameLayer.addChild(new CollisionObjLayer(), 0, PlayScene.TAG_COLLISION_OBJ);
         this.addChild(this.gameLayer);
 
         var _self = this;
@@ -41,6 +53,12 @@ var PlayScene = cc.Scene.extend({
             },
         },this);
 
+        
+        cc.log(COL_LOAD);
+        var treasureAndBomb = new TreasureAndBomb();
+        new CollisionObjLayer();
+        
+        
         this.scheduleUpdate();
 
     },
@@ -56,9 +74,14 @@ var PlayScene = cc.Scene.extend({
         var xpos = this.controller.getXmovement();
         var ypos = this.controller.getYmovement();
         this.map.setMapPosition(xpos,ypos);
+        
+//        if( typeof this.objects != "null"){
+//            cc.log(JSON.stringify(this.objects));
+//        }
     }
 });
 
 PlayScene.TAG_CONTROLLER = 1;
 PlayScene.TAG_PLAYER = 2;
 PlayScene.TAG_MAP = 3;
+PlayScene.TAG_COLLISION_OBJ = 4;

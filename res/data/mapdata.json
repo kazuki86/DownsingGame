@@ -1,0 +1,16 @@
+{
+    "obj":[
+        {
+            "collision_type":"circle",
+            "x":200,
+            "y":300,
+            "r":10
+        },
+        {
+            "collision_type":"circle",
+            "x":500,
+            "y":100,
+            "r":15
+        }
+    ]
+}

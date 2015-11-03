@@ -21,6 +21,9 @@ var ymapPosition = 0;
 var xmovement = 0;
 var ymovement = 0;
 
+var treasures = null;
+var bombs = null;
+
 var HelloWorldLayer = cc.Layer.extend({
     sprite:null,
     controllAreaSize:100, //コントローラーのサイズ
